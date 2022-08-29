@@ -1,1 +1,4 @@
-<p>character works!</p>
+<div class="character" [style.background-image]="'url(' + imagePath + ')'">
+    <div class="value">{{valueString()}}</div>
+    <div class="name">{{name.toUpperCase()}}</div>
+</div>

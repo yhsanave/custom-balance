@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { alea } from 'seedrandom'
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'custom-balance';
+  title = 'Custom Balance';
+  rng: any = alea(new Date().setHours(0, 0, 0, 0).toString());
+
+  floor(num: number) {
+    return Math.floor(num);
+  }
 }
