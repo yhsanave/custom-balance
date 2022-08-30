@@ -9,15 +9,10 @@ export class CharacterComponent implements OnInit {
 
   @Input() name: string = 'Jigglypuff';
   @Input() imagePath: string = '../../assets/characters/Jigglypuff.png';
-  @Input() value: number = 3;
+  @Input() value: string = '+3';
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
-  valueString(): string {
-    return this.value > 0 ? `+${this.value}` : `${this.value}`
-  }
-
 }

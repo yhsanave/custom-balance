@@ -1,10 +1,29 @@
-#bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    background: linear-gradient(135deg, rgba(144,0,255,1) 17%, rgba(0,0,196,1) 50%, rgba(0,212,255,1) 84%);
+@media screen and (min-width: 900px) {
+    #bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        background: linear-gradient(135deg, rgba(144,0,255,1) 17%, rgba(0,0,196,1) 50%, rgba(0,212,255,1) 84%);
+    }
+    
+    .empty {
+        width: calc(100vw / 13 * 2.5); 
+        background-color: black;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    #bg {
+        display: flex;
+        flex-direction: column;
+        background: linear-gradient(135deg, rgba(144,0,255,1) 17%, rgba(0,0,196,1) 50%, rgba(0,212,255,1) 84%);
+    }
+    
+    .empty {
+        display: hidden;
+    }
 }
