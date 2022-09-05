@@ -9,7 +9,7 @@ import { alea } from 'seedrandom'
 export class AppComponent implements OnInit {
   title = 'Custom Balance';
   rng: any = alea(new Date().setHours(0, 0, 0, 0).toString());
-  modifiers: string[] = ['-2', '-1', '±0', '+1', '+2']
+  modifiers: string[] = ['-2', '-1', '+1', '+2']
   vals: string[] = [] 
   
   get random() { return this.modifiers[Math.floor(this.rng() * this.modifiers.length)] }
