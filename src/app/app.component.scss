@@ -15,7 +15,7 @@
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
-        background: linear-gradient(135deg, rgba(144,0,255,1) 17%, rgba(0,0,196,1) 50%, rgba(0,212,255,1) 84%);
+        background: radial-gradient(farthest-corner at 0px 0px, rgb(0, 51, 255) 20%, rgb(0, 255, 187) 100%);
     }
     
     .empty {
@@ -37,7 +37,7 @@
     #bg {
         display: flex;
         flex-direction: column;
-        background: linear-gradient(135deg, rgba(144,0,255,1) 17%, rgba(0,0,196,1) 50%, rgba(0,212,255,1) 84%);
+        background: linear-gradient(135deg, rgb(0, 51, 255) 0%, rgb(0, 255, 187) 100%);
     }
     
     .empty {
