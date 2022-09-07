@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { alea } from 'seedrandom'
 
 @Component({
@@ -7,16 +8,25 @@ import { alea } from 'seedrandom'
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'Custom Balance';
-  rng: any = alea(new Date().setHours(0, 0, 0, 0).toString());
+  date?: Date;
   modifiers: string[] = ['-2', '-1', '+1', '+2']
-  vals: string[] = [] 
-  
-  get random() { return this.modifiers[Math.floor(this.rng() * this.modifiers.length)] }
-  
+  vals: string[] = []
+
+  constructor(
+    private route: ActivatedRoute
+  ) {}
+
   ngOnInit() {
-    for (var i = 0; i < 86; i++) {
-      this.vals.push(this.random)
-    }
+    this.route.queryParams.subscribe(params => {
+      if (params['date']) this.date = new Date(params['date'].replace(/-/g, '/'));
+      else { this.date = new Date(); this.date?.setHours(0, 0, 0, 0); }
+      
+      let rng = alea(this.date?.toDateString());
+      this.vals = [];
+      for (var i = 0; i < 86; i++) {
+        this.vals.push(this.modifiers[Math.floor(rng() * this.modifiers.length)])
+      }
+    })
+    
   }
 }
