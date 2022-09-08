@@ -18,7 +18,6 @@ Just in case you hate fun, I spent a frankly unreasonable amount of time fiddlin
 
 - Make the buttons look nicer
 - Make it look nicer on mobile
-- Manually crop some of the pictures because they crop weird
-- Animations?
+- Manually crop some of the pictures because they crop weird (Isabelle)
 - Weighted modifiers?
 - Save modifier settings in local storage so you don't have to reset every time?
