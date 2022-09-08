@@ -469,9 +469,13 @@
   <div class="empty"></div>
 </div>
 
-<ng-container *ngIf="showModEditor">
-  <div id="modEditBackdrop" [ngClass]="showModEditor ? 'backdrop' : ''" (click)="toggleModEditor()"></div>
-  <div id="chevronContainer">
+<ng-container *ngIf="showModEditorDelayOut">
+  <div
+    id="modEditBackdrop"
+    class="backdrop"
+    (click)="toggleModEditor(false)"
+  ></div>
+  <div id="chevronContainer" [ngClass]="showModEditor ? 'fly-in' : 'fly-out'">
     <svg
       id="cbChevronP3"
       class="cb-chevron cb-svg"
@@ -556,7 +560,10 @@
     </svg>
     <br />
   </div>
-  <div id="chevronLabelContainer">
+  <div
+    id="chevronLabelContainer"
+    [ngClass]="showModEditor ? 'fly-in' : 'fly-out'"
+  >
     <div id="labelP3" [ngClass]="modifierCheck('+3')">+3</div>
     <div id="labelP2" [ngClass]="modifierCheck('+2')">+2</div>
     <div id="labelP1" [ngClass]="modifierCheck('+1')">+1</div>

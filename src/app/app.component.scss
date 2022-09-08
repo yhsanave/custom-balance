@@ -304,17 +304,45 @@
 }
 
 #modEditBackdrop {
-    z-index: 5;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-    visibility: hidden;
-    
-    &.backdrop {
-        pointer-events: all !important;
-        visibility: visible !important;
-    }
+  z-index: 5;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  visibility: hidden;
+
+  &.backdrop {
+    pointer-events: all !important;
+    visibility: visible !important;
+  }
+}
+
+.fly-in {
+  animation: fly-in 0.35s ease-out;
+}
+
+.fly-out {
+  animation: fly-out 0.35s ease-in;
+}
+
+@keyframes fly-in {
+  from {
+    bottom: -500px;
+  }
+
+  to {
+    bottom: 0px;
+  }
+}
+
+@keyframes fly-out {
+  from {
+    bottom: 0px;
+  }
+
+  to {
+    bottom: -500px;
+  }
 }

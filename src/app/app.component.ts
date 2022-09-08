@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { alea } from 'seedrandom'
+import { alea } from 'seedrandom';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
   date: Date = new Date();
   modifiers: string[] = ['-3', '-2', '-1', '±0', '+1', '+2', '+3'];
   vals: string[] = [];
   showModEditor: boolean = false;
+  showModEditorDelayOut: boolean = false;
 
   ngOnInit() {
     this.date.setHours(0, 0, 0, 0);
@@ -34,12 +35,18 @@ export class AppComponent implements OnInit {
     }
   }
 
-  toggleModEditor(): void {
-    this.showModEditor = !this.showModEditor;
+  toggleModEditor(state?: boolean): void {
+    if (state !== undefined) this.showModEditor = state;
+    else this.showModEditor = !this.showModEditor;
+
+    if (this.showModEditor) this.showModEditorDelayOut = this.showModEditor;
+    else
+      setTimeout(() => (this.showModEditorDelayOut = this.showModEditor), 340);
   }
 
   toggleModifier(mod: string): void {
-    if (this.modifiers.includes(mod)) this.modifiers = this.modifiers.filter(m => m !== mod);
+    if (this.modifiers.includes(mod))
+      this.modifiers = this.modifiers.filter((m) => m !== mod);
     else this.modifiers.push(mod);
     this.generateValues();
   }
