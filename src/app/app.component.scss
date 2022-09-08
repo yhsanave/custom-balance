@@ -1,46 +1,302 @@
 @media screen and (min-width: 900px) {
-    #topBar {
-        text-align: center;
-        color: white;
-        font-family: Helvetica, sans-serif;
-        font-size: 1.5em;
-        font-weight: bold;
+  #topBar {
+    position: fixed;
+    text-align: center;
+    color: white;
+    font-family: Helvetica, sans-serif;
+    font-size: 1.5em;
+    font-weight: bold;
+    height: 2em;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 50% auto auto;
+
+    #title {
+      grid-column: 1;
+      align-self: center;
+      justify-self: center;
+      background: linear-gradient(
+        90deg,
+        rgba(255, 0, 0, 1) 0%,
+        rgba(255, 136, 0, 1) 20%,
+        rgba(255, 170, 0, 1) 40%,
+        rgba(255, 255, 255, 1) 50%,
+        rgba(0, 204, 255, 1) 60%,
+        rgba(0, 153, 255, 1) 80%,
+        rgba(0, 85, 255, 1) 100%
+      );
+      color: transparent;
+      background-clip: text;
+      font-size: 1.7em;
     }
-    
-    #bg {
-        position: absolute;
-        top: 3em;
-        left: 0;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        background: radial-gradient(farthest-corner at 0px 0px, rgb(0, 51, 255) 20%, rgb(0, 255, 187) 100%);
+
+    #datepicker {
+      grid-column: 2;
+      align-self: center;
+      justify-self: center;
+      font-size: 0.8em;
     }
-    
-    .empty {
-        width: calc(100vw / 13 * 2.5); 
-        background-color: black;
+
+    #values {
+      grid-column: 3;
+      display: flex;
+      align-self: center;
+      justify-self: center;
+      white-space: nowrap;
+      font-size: 0.8em;
     }
+
+    .mat-datepicker-toggle {
+      color: white;
+    }
+  }
+
+  #bg {
+    position: fixed;
+    z-index: -1;
+    top: 3em;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 0, 0, 1) 5%,
+      rgba(255, 136, 0, 1) 20%,
+      rgba(255, 170, 0, 1) 35%,
+      rgba(255, 255, 255, 1) 50%,
+      rgba(0, 204, 255, 1) 65%,
+      rgba(0, 153, 255, 1) 80%,
+      rgba(0, 85, 255, 1) 95%
+    );
+    // background: radial-gradient(
+    //   farthest-corner at 0px 0px,
+    //   rgb(0, 51, 255) 20%,
+    //   rgb(0, 255, 187) 100%
+    // );
+  }
+
+  .empty {
+    width: calc(100vw / 13 * 2.5);
+    background-color: black;
+  }
 }
 
 @media screen and (max-width: 900px) {
-    #topBar {
-        text-align: center;
-        color: white;
-        font-family: Helvetica, sans-serif;
-        font-size: 1.2em;
-        font-weight: bold;
-        height: 1.6em;
+  #topBar {
+    text-align: center;
+    color: white;
+    font-family: Helvetica, sans-serif;
+    font-size: 1.2em;
+    font-weight: bold;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "title title"
+      "date values";
+
+    #title {
+      grid-area: title;
     }
 
-    #bg {
-        display: flex;
-        flex-direction: column;
-        background: linear-gradient(135deg, rgb(0, 51, 255) 0%, rgb(0, 255, 187) 100%);
+    #datepicker {
+      grid-area: date;
     }
-    
-    .empty {
-        display: hidden;
+
+    #values {
+      grid-area: values;
     }
+
+    .mat-datepicker-toggle {
+      color: white;
+    }
+  }
+
+  #bg {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(
+      135deg,
+      rgb(0, 51, 255) 0%,
+      rgb(0, 255, 187) 100%
+    );
+  }
+
+  .empty {
+    display: hidden;
+  }
+}
+
+#chevronContainer {
+  max-width: 200px;
+  display: grid;
+  grid-template-rows: repeat(3, 53px) 20px repeat(3, 53px);
+  background-color: #ffffff80;
+  border-radius: 50px;
+  padding: 60px 0px;
+  margin: 10px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  align-items: center;
+
+  .cb-svg {
+    display: inline-block;
+    vertical-align: middle;
+    width: 200px;
+    height: 200px;
+    pointer-events: none;
+  }
+
+  // Positioning and clipping
+  #cbChevronP3 {
+    grid-row: 1;
+    clip-path: url("#cbChevronP3 > path:nth-child(1)");
+  }
+  #cbChevronP2 {
+    grid-row: 2;
+    clip-path: url("#cbChevronP2 > path:nth-child(1)");
+  }
+  #cbChevronP1 {
+    grid-row: 3;
+    clip-path: url("#cbChevronP1 > path:nth-child(1)");
+  }
+  #cbDot {
+    grid-row: 4;
+    clip-path: url("#cbDot > ellipse");
+  }
+  #cbChevronM1 {
+    grid-row: 5;
+    clip-path: url("#cbChevronM1 > path:nth-child(1)");
+  }
+  #cbChevronM2 {
+    grid-row: 6;
+    clip-path: url("#cbChevronM2 > path:nth-child(1)");
+  }
+  #cbChevronM3 {
+    grid-row: 7;
+    clip-path: url("#cbChevronM3 > path:nth-child(1)");
+  }
+
+  // Color Fills
+  .cb-chevron-grey {
+    fill: #00000080 !important;
+  }
+
+  #cbChevronP3 > path:nth-child(1) {
+    fill: #ff0000;
+  }
+
+  #cbChevronP2 > path:nth-child(1) {
+    fill: #ff8800;
+  }
+
+  #cbChevronP1 > path:nth-child(1) {
+    fill: #ffaa00;
+  }
+
+  #cbDot > ellipse {
+    fill: white;
+  }
+
+  #cbChevronM1 > path:nth-child(1) {
+    fill: #00ccff;
+  }
+
+  #cbChevronM2 > path:nth-child(1) {
+    fill: #0099ff;
+  }
+
+  #cbChevronM3 > path:nth-child(1) {
+    fill: #0055ff;
+  }
+}
+
+.cb-chevron > path {
+  stroke: white;
+  stroke-width: 0.2;
+  pointer-events: all;
+}
+
+.cb-dot > ellipse {
+  stroke: white;
+  stroke-width: 5;
+  pointer-events: all;
+}
+
+#chevronLabelContainer {
+  position: fixed;
+  bottom: 0;
+  right: 128px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 2em;
+  text-align: center;
+  -webkit-text-stroke: 1px black;
+  color: white;
+  pointer-events: none;
+
+  #labelP3 {
+    position: absolute;
+    bottom: 410px;
+
+    &.cb-chevron-grey {
+      color: #ff0000;
+    }
+  }
+
+  #labelP2 {
+    position: absolute;
+    bottom: 355px;
+
+    &.cb-chevron-grey {
+      color: #ff8800;
+    }
+  }
+
+  #labelP1 {
+    position: absolute;
+    bottom: 300px;
+
+    &.cb-chevron-grey {
+      color: #ffaa00;
+    }
+  }
+
+  #labelZ {
+    position: absolute;
+    bottom: 220px;
+
+    &.cb-chevron-grey {
+      color: #aaaaaa;
+    }
+  }
+
+  #labelM1 {
+    position: absolute;
+    bottom: 135px;
+
+    &.cb-chevron-grey {
+      color: #00ccff;
+    }
+  }
+
+  #labelM2 {
+    position: absolute;
+    bottom: 82px;
+
+    &.cb-chevron-grey {
+      color: #0099ff;
+    }
+  }
+
+  #labelM3 {
+    position: absolute;
+    bottom: 30px;
+
+    &.cb-chevron-grey {
+      color: #0055ff;
+    }
+  }
 }

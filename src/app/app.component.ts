@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { alea } from 'seedrandom'
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-root',
@@ -8,25 +8,43 @@ import { alea } from 'seedrandom'
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  date?: Date;
-  modifiers: string[] = ['-2', '-1', '+1', '+2']
-  vals: string[] = []
-
-  constructor(
-    private route: ActivatedRoute
-  ) {}
+  date: Date = new Date();
+  modifiers: string[] = ['-3', '-2', '-1', '±0', '+1', '+2', '+3'];
+  vals: string[] = [];
+  showModEditor: boolean = false;
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      if (params['date']) this.date = new Date(params['date'].replace(/-/g, '/'));
-      else { this.date = new Date(); this.date?.setHours(0, 0, 0, 0); }
-      
-      let rng = alea(this.date?.toDateString());
-      this.vals = [];
-      for (var i = 0; i < 86; i++) {
-        this.vals.push(this.modifiers[Math.floor(rng() * this.modifiers.length)])
-      }
-    })
-    
+    this.date.setHours(0, 0, 0, 0);
+    this.generateValues();
+  }
+
+  generateValues(): void {
+    this.modifiers.sort();
+    let rng = alea(this.date.toString());
+    this.vals = [];
+    for (var i = 0; i < 86; i++) {
+      this.vals.push(this.modifiers[Math.floor(rng() * this.modifiers.length)]);
+    }
+  }
+
+  changeDate(event: MatDatepickerInputEvent<Date>): void {
+    if (event.value) {
+      this.date = event.value;
+      this.generateValues();
+    }
+  }
+
+  showEditModifiers(): void {
+    this.showModEditor = !this.showModEditor;
+  }
+
+  toggleModifier(mod: string): void {
+    if (this.modifiers.includes(mod)) this.modifiers = this.modifiers.filter(m => m !== mod);
+    else this.modifiers.push(mod);
+    this.generateValues();
+  }
+
+  modifierCheck(mod: string): string {
+    return this.modifiers.includes(mod) ? '' : 'cb-chevron-grey';
   }
 }
