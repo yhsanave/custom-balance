@@ -13,3 +13,12 @@ Simply visit https://balance.yhsanave.me and it will generate today's custom bal
 ## What?
 
 Just in case you hate fun, I spent a frankly unreasonable amount of time fiddling with CSS to make a nice UI so you can limit the possible values that can be rolled. Simply click the `Edit Allowed Modifiers` button at the top right and use the controls that pop up to set your allowed modifiers. Note that every combination of modifiers has a slightly different array (though it is still deterministic). This means that it's important to ensure that everyone configuring setups has the same settings.
+
+## TODO
+
+- Make the buttons look nicer
+- Make it look nicer on mobile
+- Manually crop some of the pictures because they crop weird
+- Animations?
+- Weighted modifiers?
+- Save modifier settings in local storage so you don't have to reset every time?

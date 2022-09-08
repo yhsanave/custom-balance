@@ -12,7 +12,7 @@
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </div>
-  <button id="values" color="primary" (click)="showEditModifiers()">
+  <button id="values" color="primary" (click)="toggleModEditor()">
     Edit Allowed Modifiers
   </button>
 </nav>
@@ -470,6 +470,7 @@
 </div>
 
 <ng-container *ngIf="showModEditor">
+  <div id="modEditBackdrop" [ngClass]="showModEditor ? 'backdrop' : ''" (click)="toggleModEditor()"></div>
   <div id="chevronContainer">
     <svg
       id="cbChevronP3"

@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
     }
   }
 
-  showEditModifiers(): void {
+  toggleModEditor(): void {
     this.showModEditor = !this.showModEditor;
   }
 
